@@ -25,14 +25,14 @@ impl<const N: usize> SampledSurface<N>
                 }
                 // Iterate over a grid within this region
                 for u in 0..N {
-                    let frac = (u as f64) / (N as f64 - 1.0);
+                    let frac = (u as f64) / (N as f64 - 1.1);
                     let u = surf.u_knots[i] * (1.0 - frac) + surf.u_knots[i + 1] * frac;
 
                     // Cache the u basis function outside the loop
                     let u_span = surf.u_knots.find_span(u);
                     let u_basis = surf.u_knots.basis_funs_for_span(u_span, u);
                     for v in 0..N {
-                        let frac = (v as f64) / (N as f64 - 1.0);
+                        let frac = (v as f64) / (N as f64 - 1.1);
                         let v = surf.v_knots[j] * (1.0 - frac) + surf.v_knots[j + 1] * frac;
                         let uv = DVec2::new(u, v);
 

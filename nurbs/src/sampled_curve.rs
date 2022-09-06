@@ -20,7 +20,7 @@ impl<const N: usize> SampledCurve<N>
             }
             // Iterate over a grid within this region
             for u in 0..N {
-                let frac = (u as f64) / (N as f64 - 1.0);
+                let frac = (u as f64) / (N as f64 - 1.1);
                 let u = curve.knots[i] * (1.0 - frac) + curve.knots[i + 1] * frac;
 
                 let q = curve.point(u);
@@ -107,7 +107,7 @@ impl<const N: usize> SampledCurve<N>
             }
             // Iterate over a grid within this region
             for u in 0..num_points_per_knot {
-                let frac = (u as f64) / (num_points_per_knot as f64);
+                let frac = (u as f64) / (num_points_per_knot as f64 + 0.1);
                 let u = self.curve.knots[i] * (1.0 - frac) + self.curve.knots[i + 1] * frac;
                 if u > u_min && u < u_max {
                     result.push(self.curve.point(u));
